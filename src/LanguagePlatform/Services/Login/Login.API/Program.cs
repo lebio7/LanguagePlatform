@@ -1,8 +1,11 @@
 using Login.API.Entities;
+using Login.API.Helpers;
 using Login.API.Helpers.Interfaces;
+using Login.API.Persistence;
 using Login.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -58,10 +61,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ClockSkew = TimeSpan.Zero
         };
     });
+
+builder.Services.AddDbContext<UserContext>(options =>
+              options.UseSqlServer(builder.Configuration.GetConnectionString("UserConnectionString")));
+
+
 builder.Services.AddSingleton<IPasswordHasherExtension, PasswordHasherExtension>();
 builder.Services.AddTransient<ITokenJwt, TokenJwt>();
 builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
+
 var app = builder.Build();
+
+app.MigrateDatabase<UserContext>((context, serviceProvider) =>
+{
+    // Tutaj mo¿esz umieœciæ kod seedowania lub inne operacje zwi¹zane z baz¹ danych
+    var logger = serviceProvider.GetRequiredService<ILogger<UserContext>>();
+    DbExtensions.SeedAsync(context, logger).Wait();
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
