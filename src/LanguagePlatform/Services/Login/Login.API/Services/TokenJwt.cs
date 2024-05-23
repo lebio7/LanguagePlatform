@@ -1,4 +1,4 @@
-﻿using Login.API.Entities;
+﻿using Login.API.Entities.Users;
 using Login.API.Helpers.Interfaces;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

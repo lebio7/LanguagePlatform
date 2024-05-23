@@ -1,7 +1,8 @@
-using Login.API.Entities;
+using Login.API.Entities.Users;
 using Login.API.Helpers;
 using Login.API.Helpers.Interfaces;
 using Login.API.Persistence;
+using Login.API.Repositories;
 using Login.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -69,7 +70,7 @@ builder.Services.AddDbContext<UserContext>(options =>
 builder.Services.AddSingleton<IPasswordHasherExtension, PasswordHasherExtension>();
 builder.Services.AddTransient<ITokenJwt, TokenJwt>();
 builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
-
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 var app = builder.Build();
 
 app.MigrateDatabase<UserContext>((context, serviceProvider) =>

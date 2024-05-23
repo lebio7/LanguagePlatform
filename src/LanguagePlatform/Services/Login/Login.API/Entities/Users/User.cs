@@ -1,6 +1,6 @@
 ﻿using Login.API.Helpers.Enums;
 
-namespace Login.API.Entities;
+namespace Login.API.Entities.Users;
 
 public class User : EntityBase
 {

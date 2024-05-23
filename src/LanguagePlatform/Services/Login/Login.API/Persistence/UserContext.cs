@@ -1,4 +1,5 @@
 ﻿using Login.API.Entities;
+using Login.API.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Login.API.Persistence

@@ -27,8 +27,4 @@
     <None Include="Requests\LoginRequest.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>

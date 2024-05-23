@@ -1,4 +1,4 @@
-﻿using Login.API.Entities;
+﻿using Login.API.Entities.Users;
 
 namespace Login.API.Helpers.Interfaces
 {

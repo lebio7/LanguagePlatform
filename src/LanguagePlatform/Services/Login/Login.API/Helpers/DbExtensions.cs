@@ -1,4 +1,4 @@
-﻿using Login.API.Entities;
+﻿using Login.API.Entities.Users;
 using Login.API.Helpers.Enums;
 using Login.API.Persistence;
 using Microsoft.Data.SqlClient;
