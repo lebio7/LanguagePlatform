@@ -66,7 +66,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddDbContext<UserContext>(options =>
               options.UseSqlServer(builder.Configuration.GetConnectionString("UserConnectionString")));
 
-
+builder.Services.AddApplicationServices();
 builder.Services.AddSingleton<IPasswordHasherExtension, PasswordHasherExtension>();
 builder.Services.AddTransient<ITokenJwt, TokenJwt>();
 builder.Services.AddTransient<IPasswordHasher<User>, PasswordHasher<User>>();
@@ -75,7 +75,6 @@ var app = builder.Build();
 
 app.MigrateDatabase<UserContext>((context, serviceProvider) =>
 {
-    // Tutaj mo¿esz umieœciæ kod seedowania lub inne operacje zwi¹zane z baz¹ danych
     var logger = serviceProvider.GetRequiredService<ILogger<UserContext>>();
     DbExtensions.SeedAsync(context, logger).Wait();
 });
