@@ -27,6 +27,6 @@ public class UserRepository : RepositoryBase<User>, IUserRepository
                 : UsersErrors.SameEmail;
         }
 
-        return Error.None;
+        return Result.Success();
     }
 }
