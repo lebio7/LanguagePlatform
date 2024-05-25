@@ -24,5 +24,7 @@ namespace Login.API.Helpers
         public static Result Success() => new(true, Error.None);
 
         public static Result Failure(Error error) => new(false, error);
+
+        public string GetMessage() => IsFailure ? $"{Error.Code} - {Error.Description}" : string.Empty;
     }
 }

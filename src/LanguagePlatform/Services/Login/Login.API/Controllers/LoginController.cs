@@ -1,4 +1,7 @@
-﻿using Login.API.Features.Commands.RegisterDict;
+﻿using Login.API.Behaviours;
+using Login.API.Features.Commands.LoginDict;
+using Login.API.Features.Commands.RegisterDict;
+using Login.API.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,10 +24,18 @@ namespace Login.API.Controllers
             var result = await mediator.Send(request);
             if (result.IsFailure)
             {
-                return Results.BadRequest(result.Error);
+                throw new ResultException(result.GetMessage());
             }
 
             return Results.Ok();
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult<AuthDto>> Login([FromBody] LoginCommand request)
+        {
+            var result = await mediator.Send(request);
+          
+            return Ok(result);
         }
     }
 }

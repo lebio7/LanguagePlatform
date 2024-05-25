@@ -3,5 +3,7 @@
     public interface IPasswordHasherExtension
     {
         string GenerateSalt();
+
+        string GenerateSaltWithPassowrd(string password, string salt);
     }
 }

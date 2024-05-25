@@ -43,6 +43,7 @@ public class ExceptionHandlingMiddleware
                 break;
             case ArgumentNullException:
             case ArgumentException:
+            case ResultException:
                 code = HttpStatusCode.BadRequest; // 400
                 result = System.Text.Json.JsonSerializer.Serialize(new { message = exception.Message });
                 break;

@@ -12,13 +12,13 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, Result>
     private readonly IPasswordHasherExtension passwordHasherExtension;
     private readonly IPasswordHasher<User> passwordHasher;
     private readonly IUserRepository userRepository;
-    private readonly ILogger<RegisterCommand> logger;
+    private readonly ILogger<RegisterHandler> logger;
 
 
     public RegisterHandler(IPasswordHasherExtension passwordHasherExtension,
         IPasswordHasher<User> passwordHasher,
         IUserRepository userRepository,
-        ILogger<RegisterCommand> logger)
+        ILogger<RegisterHandler> logger)
     {
         this.passwordHasherExtension = passwordHasherExtension;
         this.passwordHasher = passwordHasher;
@@ -28,7 +28,7 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, Result>
     public async Task<Result> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         var salt = passwordHasherExtension.GenerateSalt();
-        var saltedPassword = request.Password + salt;
+        var saltedPassword = passwordHasherExtension.GenerateSaltWithPassowrd(request.Password, salt);
 
         var errorExists = await userRepository.UserExists(request.Login, request.Email);
         if (errorExists.IsFailure) return errorExists;

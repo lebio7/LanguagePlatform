@@ -15,6 +15,11 @@ public class UserRepository : RepositoryBase<User>, IUserRepository
         this.dbContext = dbContext;
     }
 
+    public async Task<User?> GetByLogin(string login, CancellationToken cancellationToken)
+    {
+        return await dbContext.Users.FirstOrDefaultAsync(x => x.Login.ToUpper() == login, cancellationToken);
+    }
+
     public async Task<Result> UserExists(string login, string email)
     {
         var user = await dbContext.Users.FirstOrDefaultAsync(x => x.Login.ToUpper() == login.ToUpper()
