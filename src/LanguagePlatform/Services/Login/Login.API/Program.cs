@@ -1,3 +1,4 @@
+using Login.API.Behaviours;
 using Login.API.Entities.Users;
 using Login.API.Helpers;
 using Login.API.Helpers.Interfaces;
@@ -89,6 +90,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

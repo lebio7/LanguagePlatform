@@ -63,7 +63,7 @@ public static class DbExtensions
     }
 
     private static User GetAdminUser() =>
-    new User
+    new User()
     {
         IsActive = true,
         Login = "admin",

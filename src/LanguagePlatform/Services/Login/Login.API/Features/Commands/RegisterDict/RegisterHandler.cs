@@ -33,14 +33,11 @@ public class RegisterHandler : IRequestHandler<RegisterCommand, Result>
         var errorExists = await userRepository.UserExists(request.Login, request.Email);
         if (errorExists.IsFailure) return errorExists;
 
-        var user = new User
+        var user = new User(request.Login, request.Email, request.Password)
         {
-            Login = request.Login,
-            Email = request.Email,
             Password = passwordHasher.HashPassword(null, saltedPassword),
             Role = request.role,
             Salt = salt,
-            IsActive = true,
         };
 
         await userRepository.AddAsync(user);
