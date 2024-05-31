@@ -1,7 +1,4 @@
-﻿using Azure.Core;
-using Login.API.Helpers.Interfaces;
-using System.Security.Cryptography;
-using System.Text;
+﻿using Login.API.Helpers.Interfaces;
 
 namespace Login.API.Services
 {
