@@ -43,9 +43,9 @@ namespace Login.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet]
+        [HttpGet("Users")]
         [Authorize(Roles = "ADMIN")]
-        public async Task<ActionResult<IReadOnlyList<object>>> GetAllUsers([FromQuery] GetAllUsersQuery query)
+        public async Task<ActionResult<PaginationResult<UserDto>>> GetAllUsers([FromQuery] GetAllUsersQuery query)
         {
             var result = await mediator.Send(query);
 
