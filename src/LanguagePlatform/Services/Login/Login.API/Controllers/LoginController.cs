@@ -2,6 +2,7 @@
 using Login.API.Features.Commands.LoginDict;
 using Login.API.Features.Commands.RegisterDict;
 using Login.API.Features.Queries.GetAllUsersDict;
+using Login.API.Features.Queries.GetUserByIdDict;
 using Login.API.Models;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -50,6 +51,15 @@ namespace Login.API.Controllers
             var result = await mediator.Send(query);
 
             return Ok(result);
+        }
+
+        [HttpGet("[action]/{id}")]
+        [Authorize(Roles = "ADMIN,USER")]
+        public async Task<ActionResult<UserDto>> GetUserById(int id)
+        {
+            var res = await mediator.Send(new GetUserByIdQuery(id));
+
+            return Ok(res);
         }
     }
 }

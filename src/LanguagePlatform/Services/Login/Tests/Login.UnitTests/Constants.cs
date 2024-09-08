@@ -6,6 +6,7 @@
         {
             public static string Login = "Login/Login";
             public static string GetAllUsers = "Login/Users";
+            public static string GetUserById = "Login/GetUserById";
         }
 
         public static string AdminLogin = "admin";

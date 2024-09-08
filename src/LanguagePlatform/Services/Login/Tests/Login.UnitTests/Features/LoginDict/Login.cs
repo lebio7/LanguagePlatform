@@ -88,6 +88,7 @@ namespace Login.IntegrationTests.Features.LoginDict
             response.Should().NotBeNull();
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.Unauthorized);
         }
+
         [Fact]
         public async Task When_Is_Authorize_And_Admin_Login_Exists_Then_Return_List()
         {
@@ -111,6 +112,39 @@ namespace Login.IntegrationTests.Features.LoginDict
             resDto.Should().NotBeNull();
             resDto?.TotalResult.Should().BeGreaterThan(0);
             resDto?.Items?.Any(x => x.Login == Constants.AdminLogin);
+        }
+
+        [Fact]
+        public async Task When_User_Is_Not_Exists_With_Id_Then_Return_Not_Found_Exception()
+        {
+            var loginRequest = await LogInToSystem();
+            var contentLogin = await loginRequest.Content.ReadAsStringAsync();
+            var authDto = JsonConvert.DeserializeObject<AuthDto>(contentLogin);
+            var request = new HttpRequestMessage(HttpMethod.Get, Constants.Urls.GetUserById + "/21212");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authDto?.Token);
+
+            var response = await Client.SendAsync(request);
+            response.Should().NotBeNull();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.NotFound);
+        }
+
+        [Fact]
+        public async Task When_User_Is_Exists_With_Id_Then_Return_User_Object()
+        {
+            var loginRequest = await LogInToSystem();
+            var contentLogin = await loginRequest.Content.ReadAsStringAsync();
+            var authDto = JsonConvert.DeserializeObject<AuthDto>(contentLogin);
+            var request = new HttpRequestMessage(HttpMethod.Get, Constants.Urls.GetUserById + "/2");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authDto?.Token);
+
+            var response = await Client.SendAsync(request);
+            response.Should().NotBeNull();
+            response.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+
+            var content = await response.Content.ReadAsStringAsync();
+            var userDto = JsonConvert.DeserializeObject<UserDto>(content);
+            userDto.Should().NotBeNull();
+            userDto?.Login.Should().NotBeNullOrEmpty();
         }
     }
 }
