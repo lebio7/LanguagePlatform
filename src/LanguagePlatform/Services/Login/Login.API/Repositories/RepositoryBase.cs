@@ -38,7 +38,13 @@ namespace Login.API.Repositories
             return await query.ToListAsync();
         }
 
-        public async Task<IReadOnlyList<T>> GetAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<Expression<Func<T, object>>> includes = null, bool disableTracking = true)
+        public IQueryable<T> BuildQueryable(Expression<Func<T, bool>> predicate = null,
+            Func<IQueryable<T>, 
+            IOrderedQueryable<T>> orderBy = null,
+            List<Expression<Func<T, object>>> includes = null,
+            bool disableTracking = true,
+            int? limit = null,
+            int? offset = 0)
         {
             IQueryable<T> query = dbContext.Set<T>();
             if (disableTracking) query = query.AsNoTracking();
@@ -48,8 +54,15 @@ namespace Login.API.Repositories
             if (predicate != null) query = query.Where(predicate);
 
             if (orderBy != null)
-                return await orderBy(query).ToListAsync();
-            return await query.ToListAsync();
+            {
+                var orderedQuery = orderBy(query);
+                if (limit.HasValue)
+                {
+                    return orderedQuery.Skip(offset.GetValueOrDefault()).Take(limit.Value).AsQueryable();
+                }
+            }
+             
+            return query.AsQueryable();
         }
 
         public virtual async Task<T> GetByIdAsync(int id)
