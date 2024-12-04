@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/src/LanguagePlatform/Services/Words/Words.API/appsettings.json
+/src/LanguagePlatform/Services/Login/Login.API/appsettings.json
+/src/LanguagePlatform/Services/Login/Login.API/appsettings.Development.json
+/src/LanguagePlatform/Services/Words/Words.API/appsettings.Development.json
