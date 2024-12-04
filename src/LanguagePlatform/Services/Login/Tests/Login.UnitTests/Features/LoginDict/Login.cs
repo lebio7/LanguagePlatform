@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Login.IntegrationTests.Features.LoginDict
 {
-    public class Login : BaseSetUp
+    public class Login : BaseIntegrationTest
     {
-        public Login(WebApplicationFactory<Program> factory)
+        public Login(IntegrationTestWebAppFactory factory)
             : base(factory)
         {
 
@@ -134,7 +134,7 @@ namespace Login.IntegrationTests.Features.LoginDict
             var loginRequest = await LogInToSystem();
             var contentLogin = await loginRequest.Content.ReadAsStringAsync();
             var authDto = JsonConvert.DeserializeObject<AuthDto>(contentLogin);
-            var request = new HttpRequestMessage(HttpMethod.Get, Constants.Urls.GetUserById + "/2");
+            var request = new HttpRequestMessage(HttpMethod.Get, Constants.Urls.GetUserById + "/1");
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authDto?.Token);
 
             var response = await Client.SendAsync(request);
