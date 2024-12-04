@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  login.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:UserConnectionString=Server=loginDb;Database=UserDb;User Id=sa;Password=Lebio12345678;Encrypt=false;TrustServerCertificate=true;"  
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+    depends_on:
+        - loginDb
