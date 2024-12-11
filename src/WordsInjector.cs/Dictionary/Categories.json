@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "Kuchnia",
+    "Description": "Słownictwo związane z jedzeniem i gotowaniem."
+  },
+  {
+    "Name": "Szkoła",
+    "Description": "Słownictwo związane z edukacją, przedmiotami szkolnymi, i zajęciami."
+  },
+  {
+    "Name": "Lotnictwo",
+    "Description": "Słownictwo związane z samolotami, lotniskami i podróżowaniem w powietrzu."
+  },
+  {
+    "Name": "Podróże",
+    "Description": "Słownictwo używane podczas podróży i turystyki."
+  },
+  {
+    "Name": "Technologia",
+    "Description": "Słownictwo z zakresu technologii i urządzeń elektronicznych."
+  }
+]

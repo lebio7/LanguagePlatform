@@ -10,6 +10,8 @@ namespace Words.Domain.Entities
 
         public string? Description { get; set; }
 
+        public int? Value { get; set; } 
+
         public string? CultureName { get; set; }
     }
 }

@@ -13,5 +13,7 @@ namespace Words.Domain.Entities
         public ObjectId? CategoryId { get; set; }
 
         public ObjectId? LevelId { get; set; } 
+
+        public List<TranslatedWord>? TranslatedWords { get; set; }
     }
 }

@@ -400,3 +400,4 @@ FodyWeavers.xsd
 /src/LanguagePlatform/Services/Login/Login.API/appsettings.json
 /src/LanguagePlatform/Services/Login/Login.API/appsettings.Development.json
 /src/LanguagePlatform/Services/Words/Words.API/appsettings.Development.json
+/src/WordsInjector.cs/appsettings.json

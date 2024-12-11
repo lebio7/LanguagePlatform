@@ -12,6 +12,8 @@ namespace Words.Infrastructure.Persistence
 
         public IMongoCollection<Level> Levels { get; }
 
+        public IMongoCollection<Language> Languages { get; }
+
         public MongoContext(IConfiguration configuration)
         {
             var client = new MongoClient(configuration["DatabaseSettings:ConnectionString"]);
@@ -19,6 +21,7 @@ namespace Words.Infrastructure.Persistence
             Words = database.GetCollection<Word>(configuration["DatabaseSettings:CollectionNameWord"]);
             Categories = database.GetCollection<Category>(configuration["DatabaseSettings:CollectionNameCategory"]);
             Levels = database.GetCollection<Level>(configuration["DatabaseSettings:CollectionNameLevel"]);
+            Languages = database.GetCollection<Language>(configuration["DatabaseSettings:CollectionNameLanguage"]);
         }
     }
 }

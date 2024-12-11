@@ -10,5 +10,7 @@ namespace Words.Infrastructure.Persistence
         IMongoCollection<Category> Categories { get; }
 
         IMongoCollection<Level> Levels { get; }
+
+        IMongoCollection<Language> Languages { get; }
     }
 }

@@ -8,7 +8,7 @@ namespace Words.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<IMongoContext, MongoContext>();
+            services.AddSingleton<IMongoContext, MongoContext>();
             services.AddScoped<IWordRepository, WordRepository>();
             services.AddScoped<ILevelRepository, LevelRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

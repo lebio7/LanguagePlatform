@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Words.Domain", "Services\Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Words.Infrastructure", "Services\Words\Words.Infrastructure\Words.Infrastructure.csproj", "{6D8203E0-8141-4643-A88D-FBB1CFCAC976}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordsInjector.cs", "..\WordsInjector.cs\WordsInjector.cs.csproj", "{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{6D8203E0-8141-4643-A88D-FBB1CFCAC976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D8203E0-8141-4643-A88D-FBB1CFCAC976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D8203E0-8141-4643-A88D-FBB1CFCAC976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{D16CC934-6654-4440-B5FB-2BEE2538BC5D} = {B64822E0-22A5-4D24-BC63-6480CA0AF6AF}
 		{642B9BAE-643A-44FE-93F4-0148AA1B81AA} = {B64822E0-22A5-4D24-BC63-6480CA0AF6AF}
 		{6D8203E0-8141-4643-A88D-FBB1CFCAC976} = {B64822E0-22A5-4D24-BC63-6480CA0AF6AF}
+		{512834A1-9BFF-4199-A6AD-46D7BEDEF2E8} = {B64822E0-22A5-4D24-BC63-6480CA0AF6AF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {901F7648-7F3D-496B-A867-8A8852611EDD}
