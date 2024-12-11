@@ -6,5 +6,9 @@ namespace Words.Infrastructure.Persistence
     public interface IMongoContext
     {
         IMongoCollection<Word> Words { get; }
+
+        IMongoCollection<Category> Categories { get; }
+
+        IMongoCollection<Level> Levels { get; }
     }
 }

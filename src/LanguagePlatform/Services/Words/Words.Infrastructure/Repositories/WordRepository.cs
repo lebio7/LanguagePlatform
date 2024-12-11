@@ -5,7 +5,7 @@ using Words.Infrastructure.Persistence;
 
 namespace Words.Infrastructure.Repositories
 {
-    public class WordRepository : IWordRepository
+    public partial class WordRepository : IWordRepository
     {
         private readonly IMongoContext mongoContext;
         public WordRepository(IMongoContext mongoContext)

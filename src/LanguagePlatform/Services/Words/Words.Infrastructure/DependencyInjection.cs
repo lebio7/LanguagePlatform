@@ -10,6 +10,8 @@ namespace Words.Infrastructure
         {
             services.AddScoped<IMongoContext, MongoContext>();
             services.AddScoped<IWordRepository, WordRepository>();
+            services.AddScoped<ILevelRepository, LevelRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             return services;
         }
