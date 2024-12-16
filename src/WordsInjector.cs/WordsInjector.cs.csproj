@@ -35,6 +35,9 @@
     <None Update="Dictionary\Levels.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Dictionary\WordsCategories\Kitchen\A1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -30,5 +30,7 @@ class Program
         await Category.Load(mongoContext);
 
         await Language.Load(mongoContext);
+
+        await TranslatedWords.Load(mongoContext);
     }
 }

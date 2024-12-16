@@ -1,6 +1,7 @@
 ﻿using MongoDB.Driver;
 using System.Text.Json;
 using Words.Infrastructure.Persistence;
+using WordsInjector.cs.Helpers;
 
 namespace WordsInjector.cs.Providers;
 
@@ -14,17 +15,17 @@ public static class Category
 
         if (!string.IsNullOrEmpty(json))
         {
-            var categories = JsonSerializer.Deserialize<List<Words.Domain.Entities.Category>>(json);
+            var options = new JsonSerializerOptions
+            {
+                Converters = { new ObjectIdJsonConverter() }
+            };
+
+            var categories = JsonSerializer.Deserialize<List<Words.Domain.Entities.Category>>(json, options);
 
             if (categories == null)
             {
                 Console.WriteLine("Error: Failed to parse the JSON file.");
                 return;
-            }
-
-            foreach (var level in categories)
-            {
-                level.Id = MongoDB.Bson.ObjectId.GenerateNewId();
             }
 
             await mongoContext.Categories.DeleteManyAsync(Builders<Words.Domain.Entities.Category>.Filter.Empty);
