@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Words.API.Features.Queries.GetWordsDict;
 using Words.Domain.Entities;
 using Words.Infrastructure.Repositories;
 
@@ -10,21 +11,19 @@ namespace Words.API.Controllers
     public class WordController : ControllerBase
     {
         private readonly IMediator mediator;
-        private readonly IWordRepository wordRepository;
 
-        public WordController(IMediator mediator, IWordRepository wordRepository)
+        public WordController(IMediator mediator)
         {
             this.mediator = mediator;
-            this.wordRepository = wordRepository;
         }
 
-        [HttpPost("[action]")]
-        public async Task<IResult> test()
-        {
-            await wordRepository.CreateWord(new Word() { CategoryId = null, LevelId = null, Description = "Jak sie amsz", Remark = "test" });
 
-            var a = await wordRepository.GetWords();
-            return Results.Ok();
+        [HttpGet]
+        public async Task<IResult> Get()
+        {
+            var result = await mediator.Send(new GetWordsQuery());
+
+            return Results.Ok(result);
         }
     }
 }

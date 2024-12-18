@@ -1,5 +1,6 @@
 ﻿
 using Words.Domain.Entities;
+using Words.Infrastructure.Helpers;
 
 namespace Words.Infrastructure.Repositories
 {
@@ -10,5 +11,7 @@ namespace Words.Infrastructure.Repositories
         Task<Word> GetWord(string id);
 
         Task<IEnumerable<Word>> GetWords();
+
+        Task<IReadOnlyList<WordWithDetails>> GetWordsWithExtraDetails(GetWordsWithExtraDetailsFilter filter);
     }
 }

@@ -11,4 +11,6 @@ public class WordWithDetails
 
     
     public required Level Level { get; set; }
+
+    public required TranslatedWord TranslatedWord { get; set; }
 }
