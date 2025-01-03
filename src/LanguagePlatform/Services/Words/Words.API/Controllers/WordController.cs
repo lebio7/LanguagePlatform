@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Words.API.Features.Queries.GetWordsDict;
-using Words.Domain.Entities;
-using Words.Infrastructure.Repositories;
 
 namespace Words.API.Controllers
 {
@@ -18,10 +16,18 @@ namespace Words.API.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IResult> Get()
+        [HttpGet("{languageValue}")]
+        public async Task<IResult> Get(int languageValue)
         {
-            var result = await mediator.Send(new GetWordsQuery());
+            var result = await mediator.Send(new GetWordsQuery(languageValue, null, null));
+
+            return Results.Ok(result);
+        }
+
+        [HttpGet("{languageValue}/{categoryId}/{levelValue}")]
+        public async Task<IResult> GetByFilter(int languageValue, string categoryId, int levelValue)
+        {
+            var result = await mediator.Send(new GetWordsQuery(languageValue, categoryId, levelValue));
 
             return Results.Ok(result);
         }
