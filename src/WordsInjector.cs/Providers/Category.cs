@@ -29,6 +29,9 @@ public static class Category
             }
 
             await mongoContext.Categories.DeleteManyAsync(Builders<Words.Domain.Entities.Category>.Filter.Empty);
+
+            categories.ForEach(x=> x.IsActive = true);
+
             // Wstawienie danych do kolekcji Levels
             await mongoContext.Categories.InsertManyAsync(categories);
         }
