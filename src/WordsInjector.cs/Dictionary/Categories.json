@@ -1,0 +1,27 @@
+[
+  {
+    "Id": "64b3f6a3c87a6a02a1c4dbe1",
+    "Name": "Kuchnia",
+    "Description": "Słownictwo związane z jedzeniem i gotowaniem."
+  },
+  {
+    "Id": "64b3f6a3c87a6a02a1c4dbe2",
+    "Name": "Szkoła",
+    "Description": "Słownictwo związane z edukacją, przedmiotami szkolnymi, i zajęciami."
+  },
+  {
+    "Id": "64b3f6a3c87a6a02a1c4dbe3",
+    "Name": "Lotnictwo",
+    "Description": "Słownictwo związane z samolotami, lotniskami i podróżowaniem w powietrzu."
+  },
+  {
+    "Id": "64b3f6a3c87a6a02a1c4dbe4",
+    "Name": "Podróże",
+    "Description": "Słownictwo używane podczas podróży i turystyki."
+  },
+  {
+    "Id": "64b3f6a3c87a6a02a1c4dbe5",
+    "Name": "Technologia",
+    "Description": "Słownictwo z zakresu technologii i urządzeń elektronicznych."
+  }
+]

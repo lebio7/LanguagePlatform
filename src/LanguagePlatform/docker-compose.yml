@@ -10,7 +10,6 @@ services:
       dockerfile: Services/Login/Login.API/Dockerfile
     ports:
       - "5000:80"
-      - "8080:8080"
 
   loginDb:
      image: mcr.microsoft.com/mssql/server:2017-latest
@@ -22,3 +21,39 @@ services:
      restart: always
      ports:
         - "1433:1433"
+
+  words.api:
+     image: ${DOCKER_REGISTRY-}wordsapi
+     container_name: wordsapi
+     restart: always
+     build:
+      context: .
+      dockerfile: Services/Words/Words.API/Dockerfile
+     ports:
+      - "5001:80"
+     depends_on:
+      - wordsDb
+  
+  mongo-express:
+    image: mongo-express
+    container_name: words-mongo-express
+    ports:
+      - "8001:8081"
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: secret
+    depends_on:
+      - wordsDb
+  wordsDb:
+     image: mongo
+     container_name: mongo
+     restart: always
+     ports:
+        - "27017:27017"
+     volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:

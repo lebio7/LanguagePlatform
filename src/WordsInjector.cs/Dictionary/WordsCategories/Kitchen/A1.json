@@ -1,0 +1,67 @@
+[
+  {
+    "Description": "Widelec",
+    "Remark": "Używa się w kuchni.",
+    "CategoryId": "64b3f6a3c87a6a02a1c4dbe1",
+    "Level": 1,
+    "TranslatedWords": [
+      {
+        "Language": 1,
+        "Name": "Fork",
+        "Description": "In kitchen."
+      }
+    ]
+  },
+  {
+    "Description": "Nóż",
+    "Remark": "Przydatny do krojenia.",
+    "CategoryId": "64b3f6a3c87a6a02a1c4dbe1",
+    "Level": 1,
+    "TranslatedWords": [
+      {
+        "Language": 1,
+        "Name": "Knife",
+        "Description": "Used for cutting."
+      }
+    ]
+  },
+  {
+    "Description": "Łyżka",
+    "Remark": "Do jedzenia zup.",
+    "CategoryId": "64b3f6a3c87a6a02a1c4dbe1",
+    "Level": 1,
+    "TranslatedWords": [
+      {
+        "Language": 1,
+        "Name": "Spoon",
+        "Description": "For eating soup."
+      }
+    ]
+  },
+  {
+    "Description": "Talerz",
+    "Remark": "Do podawania jedzenia.",
+    "CategoryId": "64b3f6a3c87a6a02a1c4dbe1",
+    "Level": 1,
+    "TranslatedWords": [
+      {
+        "Language": 1,
+        "Name": "Plate",
+        "Description": "For serving food."
+      }
+    ]
+  },
+  {
+    "Description": "Garnek",
+    "Remark": "Do gotowania na kuchence.",
+    "CategoryId": "64b3f6a3c87a6a02a1c4dbe1",
+    "Level": 1,
+    "TranslatedWords": [
+      {
+        "Language": 1,
+        "Name": "Pot",
+        "Description": "Used for cooking on the stove."
+      }
+    ]
+  }
+]
